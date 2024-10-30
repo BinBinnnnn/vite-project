@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  //baseURL: 'https://dv-student-backend-2019.appspot.com/students',
   baseURL: 'https://my-json-server.typicode.com/BinBinnnnn/json',
   withCredentials: false,
   headers: {
@@ -13,5 +12,8 @@ const apiClient = axios.create({
 export default {
   getEvents() {
     return apiClient.get('/events')
+  },
+  getEvent(id: number) {
+    return apiClient.get('/events/' + id)
   },
 }

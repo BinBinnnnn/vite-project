@@ -1,23 +1,22 @@
+<template>
+  <div class="student-card">
+    <h1>{{ student.name }}</h1>
+    <span>{{ student.surname }}</span>
+    <h3>GPA: {{ student.gpa }}</h3>
+  </div>
+</template>
+
 <script setup lang="ts">
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ref } from 'vue'
-import type { Event } from '@/type'
+import { defineProps } from 'vue'
+import type { Student } from '@/type' // 假设你已经定义了Student类型
+
 defineProps<{
-  event: Event
+  student: Student
 }>()
 </script>
 
-<template>
-  <div class="event-class">
-    <div class="event-card">
-      <h2>{{ event.title }}</h2>
-      <span>@{{ event.time }} on {{ event.date }}</span>
-      <h4>{{ event.organizer }}</h4>
-    </div>
-  </div>
-</template>
 <style scoped>
-.event-card {
+.student-card {
   padding: 20px;
   width: 250px;
   cursor: pointer;
@@ -31,25 +30,25 @@ defineProps<{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
 }
 
-.event-card:hover {
+.student-card:hover {
   transform: translateY(-8px); /* 鼠标悬停时上移 */
-  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.55); /* 鼠标悬停时阴影加深 */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.55); /* 鼠标悬停时阴影加深 */
 }
 
-.event-card h2 {
+.student-card h2 {
   margin: 0;
   font-size: 1.5em;
   font-weight: 600;
 }
 
-.event-card span {
+.student-card span {
   display: block;
   margin-top: 5px;
   font-size: 1em;
   color: #e0e0e0; /* 次要文字颜色 */
 }
 
-.event-card h4 {
+.student-card div {
   margin-top: 10px;
   font-size: 1.2em;
   font-weight: 500;
