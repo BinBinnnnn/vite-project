@@ -1,20 +1,21 @@
 <script setup lang="ts">
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { ref } from 'vue'
-import type { Event } from '@/type'
+import Event from '@/type/Event'
 defineProps<{
   event: Event
 }>()
 </script>
 
 <template>
-  <div class="event-class">
+  <RouterLink
+    class="event-link"
+    :to="{ name: 'event-detail-view', params: { id: event.id } }"
+  >
     <div class="event-card">
       <h2>{{ event.title }}</h2>
       <span>@{{ event.time }} on {{ event.date }}</span>
       <h4>{{ event.organizer }}</h4>
     </div>
-  </div>
+  </RouterLink>
 </template>
 <style scoped>
 .event-card {
@@ -29,6 +30,11 @@ defineProps<{
     box-shadow 0.3s ease; /* 平滑过渡效果 */
   margin-bottom: 18px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+}
+
+.event-link {
+  text-decoration: none;
+  color: #2c3e50;
 }
 
 .event-card:hover {
