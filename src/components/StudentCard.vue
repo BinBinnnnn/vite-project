@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import type { Student } from '@/type' // 假设你已经定义了Student类型
+import type { Student } from '@/types' // 假设你已经定义了Student类型
 
 defineProps<{
   student: Student
