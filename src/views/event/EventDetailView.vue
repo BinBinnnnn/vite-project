@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, defineProps } from 'vue'
 import { type Event } from '@/types'
+import { useRouter } from 'vue-router'
 import EventService from '@/services/EventService'
 const event = ref<Event | null>(null)
 const props = defineProps({
@@ -9,7 +10,7 @@ const props = defineProps({
     required: true,
   },
 })
-
+const router = useRouter()
 onMounted(() => {
   EventService.getEvent(parseInt(props.id))
     .then(response => {
@@ -22,7 +23,6 @@ onMounted(() => {
 </script>
 <template>
   <div v-if="event">
-    <h1>{{ event.title }}</h1>
     <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
     <p>{{ event.location }}</p>
   </div>

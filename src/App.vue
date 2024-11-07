@@ -1,66 +1,68 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { useMessageStore } from '@/stores/message'
+import { storeToRefs } from 'pinia'
+const store = useMessageStore()
+const { message } = storeToRefs(store)
 </script>
 
 <template>
-  <div id="layout">
-    <header>
-      <div class="wrapper">
-        <nav>
-          <RouterLink to="event-list-view">Event</RouterLink> |
-          <RouterLink to="about">About</RouterLink> |
-          <RouterLink to="student-list-view">Student</RouterLink>
-        </nav>
-      </div>
-    </header>
+  <div class="text-center font-sans text-gray-700 antialias"></div>
+  <header>
+    <div id="flashMessage" class="animate-fade" v-if="message">
+      <h4>{{ message }}</h4>
+    </div>
+    <h1>Deploy with Vercel</h1>
 
-    <RouterView />
-  </div>
+    <div class="wrapper">
+      <nav class="py-6">
+        <RouterLink
+          class="font-bold text-gray-700"
+          exact-active-class="text-green-500"
+          :to="{ name: 'event-list-view' }"
+          >Event</RouterLink
+        >
+        |
+        <RouterLink
+          class="font-bold text-gray-700"
+          exact-active-class="text-green-500"
+          :to="{ name: 'about' }"
+          >About</RouterLink
+        >
+        <!-- |
+        <RouterLink
+          class="font-bold text-gray-700"
+          exact-active-class="text-green-500"
+          :to="{ name: 'student' }"
+          >About</RouterLink
+        > -->
+        |
+        <RouterLink
+          class="font-bold text-gray-700"
+          exact-active-class="text-green-500"
+          :to="{ name: 'student-list-view' }"
+          >Student</RouterLink
+        >
+        <!-- <RouterLink :to="{ name: 'event-list-view' }">Event</RouterLink> |
+        <RouterLink :to="{ name: 'about' }">About</RouterLink> | 
+        <RouterLink :to="{ name: 'student-list-view' }">Student</RouterLink> -->
+      </nav>
+    </div>
+  </header>
+
+  <RouterView />
 </template>
 
 <style>
-#layout {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-
-  text-align: center;
-  color: #0eedcb;
-  background-color: #ebfbf2; /* 浅灰色背景 */
+@keyframes yellofade {
+  from {
+    background-color: yellow;
+  }
+  to {
+    background-color: transparent;
+  }
 }
-
-nav {
-  padding: 30px;
-  background-color: #ffffff; /* 白色背景 */
-  border-radius: 8px; /* 圆角边框 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
-  backdrop-filter: blur(10px); /* 背景模糊效果 */
-  position: relative; /* 相对定位 */
-  overflow: hidden; /* 隐藏溢出的内容 */
-}
-nav::before {
-  content: ''; /* 伪元素内容 */
-  position: absolute; /* 绝对定位 */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, #10dd7e 0%, #2575fc 100%); /* 渐变背景 */
-  opacity: 0.1; /* 透明度 */
-  z-index: -1; /* 层级 */
-}
-
-nav a {
-  font-weight: bold;
-  color: #838282;
-}
-
-nav a.router-link-exact-active {
-  color: #08e0c0;
-}
-
-h2 {
-  font-size: 20px;
+#flashMessage {
+  animation: yellofade 3s ease-in-out;
 }
 </style>

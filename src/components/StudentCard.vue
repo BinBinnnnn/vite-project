@@ -30,10 +30,9 @@ defineProps<{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
 }
 
-.student-card:hover {
+/*.student-card:hover {
   transform: translateY(-8px); /* 鼠标悬停时上移 */
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.55); /* 鼠标悬停时阴影加深 */
-}
+/* box-shadow: 0 12px 20px rgba(0, 0, 0, 0.55); /* 鼠标悬停时阴影加深 */
 
 .student-card h2 {
   margin: 0;

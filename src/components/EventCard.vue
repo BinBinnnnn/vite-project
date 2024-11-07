@@ -10,7 +10,10 @@ defineProps<{
     class="event-link"
     :to="{ name: 'event-detail-view', params: { id: event.id } }"
   >
-    <div class="event-card">
+    <div
+      class="cursor-pointer border border-gray-600 p-[20px] w-[250px] mb-[18px] hover:scale-101 hover:shadow-sp"
+    >
+      <!-- <div class="event-card hover:scale-101 hover:shadow-sp"> -->
       <h2>{{ event.title }}</h2>
       <span>@{{ event.time }} on {{ event.date }}</span>
       <h4>{{ event.organizer }}</h4>
@@ -37,10 +40,9 @@ defineProps<{
   color: #2c3e50;
 }
 
-.event-card:hover {
+/* .event-card:hover {
   transform: translateY(-8px); /* 鼠标悬停时上移 */
-  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.55); /* 鼠标悬停时阴影加深 */
-}
+/* box-shadow: 0 12px 12px rgba(0, 0, 0, 0.55); /* 鼠标悬停时阴影加深 */
 
 .event-card h2 {
   margin: 0;
